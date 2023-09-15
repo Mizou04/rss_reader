@@ -16,21 +16,21 @@ RSpec.describe(RSS::Line, "#length") do
 	end
 	it "renders line" do
 	line = RSS::Line.new(@smallContent)
-	expect(line.render).to eq("-1234567890")
+	expect(line.render.join("\n")).to eq(" 1234567890")
 	end
 	it "given padding=true it prints string with left padding #{RSS::Padding}" do
 	line = RSS::Line.new(@smallContent, true)
-	expect(line.render).to eq("#{" " * RSS::Padding}-1234567890")
+	expect(line.render().join("\n")).to eq("#{" " * RSS::Padding}#{@smallContent}")
 	end
 
 	it "given smaller content than window size (#{RSS::WindowSize}) with no padding, split to chunks" do
 		line = RSS::Line.new(@smallContent)
-		expect(line.tokenz.length).to eq(1 + @smallContent.size / RSS::WindowSize)
-		expect(line.tokenz[0]).to eq(@smallContent)
+		expect(line.render().length).to eq(1 + @smallContent.size / RSS::WindowSize)
+		expect(line.render()[0]).to eq(" #{@smallContent}")
 	end
 
 	it "given larger content than window size (#{RSS::WindowSize}) with no padding, split to chunks" do
 		line = RSS::Line.new(@largeContent)
-		expect(line.tokenz.length).to eq(1 + @largeContent.size / RSS::WindowSize)
+		expect(line.render().length).to eq(1 + @largeContent.size / RSS::WindowSize)
 	end
 end
