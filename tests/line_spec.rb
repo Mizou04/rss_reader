@@ -23,14 +23,14 @@ RSpec.describe(RSS::Line, "#length") do
 	expect(line.render().join("\n")).to eq("#{" " * RSS::Padding}#{@smallContent}")
 	end
 
-	it "given smaller content than window size (#{RSS::WindowSize}) with no padding, split to chunks" do
+	it "given smaller content than window size (#{$WindowSize}) with no padding, split to chunks" do
 		line = RSS::Line.new(@smallContent)
-		expect(line.render().length).to eq(1 + @smallContent.size / RSS::WindowSize)
+		expect(line.render().length).to eq(1 + @smallContent.size / $WindowSize)
 		expect(line.render()[0]).to eq(" #{@smallContent}")
 	end
 
-	it "given larger content than window size (#{RSS::WindowSize}) with no padding, split to chunks" do
+	it "given larger content than window size (#{$WindowSize}) with no padding, split to chunks" do
 		line = RSS::Line.new(@largeContent)
-		expect(line.render().length).to eq(1 + @largeContent.size / RSS::WindowSize)
+		expect(line.render().length).to eq(1 + @largeContent.size / $WindowSize)
 	end
 end

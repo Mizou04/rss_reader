@@ -8,5 +8,6 @@ end
 
 require "rss/line"
 require "rss/constants"
+require "rss/globals"
 require "rss/story"
 
