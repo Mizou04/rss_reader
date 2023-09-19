@@ -1,6 +1,6 @@
 module RSS
 	class Line
-		attr_reader :length
+		attr_reader :length, :padding
 		def initialize(_content, _padding=false)
 			@content = _content
 			@length  = @content.length
@@ -21,7 +21,7 @@ module RSS
 				return @tokenz
 			end
 			i = 0
-			while(i <= @content.length - WindowSize)
+			while(i <= @content.length - WindowSize + p)
 				spaceIndex = @content[i, WindowSize-p].rindex(" ")
 				chunk = @content[i, spaceIndex+1]
 				@tokenz << "#{" " * p}#{chunk}"
