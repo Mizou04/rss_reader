@@ -21,7 +21,7 @@ RSpec.describe RSS::Story do
 				body = RSS::Line.new("sample body")
 				author = RSS::Line.new("JOE BIDER")
 				story = RSS::Story.new(title, body, author)
-				p = title.padding ? " " * (RSS::Padding-1) : " " * 0
+				p = title.padding ? " " * (RSS::Padding + RSS::DefPad - 1) : " " * (RSS::DefPad-1)
 				expect(story.expanded).to be(false)
 				expect(story.render()[0]).to eq("#{p}+sample title")
 			end
@@ -30,7 +30,7 @@ RSpec.describe RSS::Story do
 				body = RSS::Line.new("sample body",true)
 				author = RSS::Line.new("JOE BIDER",true)
 				story = RSS::Story.new(title, body, author)
-				p = title.padding ? " " * (RSS::Padding-1) : " " * 0
+				p = title.padding ? " " * (RSS::Padding + RSS::DefPad - 1) : " " * (RSS::DefPad-1)
 				expect(story.expanded).to be(false)
 				expect(story.render()[0]).to eq("#{p}+sample title")
 			end
@@ -45,7 +45,7 @@ RSpec.describe RSS::Story do
 				body = RSS::Line.new("sample body",true)
 				author = RSS::Line.new("JOE BIDER",true)
 				story = RSS::Story.new(title, body, author)
-				p = title.padding ? " " * (RSS::Padding-1) : " " * 0
+				p = title.padding ? " " * (RSS::Padding + RSS::DefPad - 1) : " " * (RSS::DefPad-1)
 				expect(story.expanded).to be(false)
 				story.toggleExpand()
 				expect(story.expanded).to be(true)

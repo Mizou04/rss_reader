@@ -15,13 +15,13 @@ module RSS
 
 		private
 		def _tokenize
-			p = @padding ? Padding : 1
+			p = @padding ? Padding + DefPad : DefPad
 			if @content.length < $WindowSize - p
 				@tokenz = ["#{" " * p}#{@content}"]
 				return @tokenz
 			end
 			i = 0
-			while(i <= @content.length - $WindowSize + p)
+			while(i <= @content.length - $WindowSize)
 				spaceIndex = @content[i, $WindowSize-p].rindex(" ")
 				chunk = @content[i, spaceIndex+1]
 				@tokenz << "#{" " * p}#{chunk}"

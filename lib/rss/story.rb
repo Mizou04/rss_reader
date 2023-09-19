@@ -15,7 +15,7 @@ module RSS
 		end
 
 		def render
-			p = @title.padding ? Padding - 1 : 0
+			p = @title.padding ? Padding + DefPad - 1 : DefPad - 1
 			_title    = @title.render.join("\n")
 			_body     = @body.render.join("\n")
 			_author   = @author.render.join("\n")
